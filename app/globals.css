@@ -1,26 +1,127 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* App Theme Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-canvas: var(--Neutral100);
+  --background-surface: var(--Neutral100);
+  --background-card: var(--Neutral0);
+  --foreground-canvas: var(--Neutral1000);
+  --foreground-surface: var(--Neutral1000);
+  --foreground-card: var(--Neutral1000);
+  --caption: var(--Neutral800);
+
+  /* Brand Tokens */
+  --primary: var(--Neutral1000);
+  --primary-foreground: var(--Neutral0);
+
+  /* shadcn Used Tokens */
+  --secondary: var(--color-yellow-200);
+  --secondary-foreground: var(--color-yellow-950);
+  --muted: var(--Neutral100);
+  --foreground: var(--foreground-card);
+  --background: var(--background-card);
+  --border: var(--Neutral300);
+  --input: var(--Neutral300);
+  --muted-foreground: var(--Neutral400);
+  --ring: var(--primary);
+  --destructive: var(--color-red-500);
+
+  /* Atlassian Neutrals */
+  --Neutral0: #ffffff;
+  --Neutral100: #f8f8f8;
+  --Neutral200: #f0f1f2;
+  --Neutral300: #dddee1;
+  --Neutral400: #b7b9be;
+  --Neutral500: #8c8f97;
+  --Neutral600: #7d818a;
+  --Neutral700: #6b6e76;
+  --Neutral800: #505258;
+  --Neutral900: #3b3d42;
+  --Neutral1000: #292a2e;
+  --Neutral1100: #1e1f21;
+  --Neutral1200: #000000;
 }
 
+/* Tailwind Theme Mappings */
 @theme inline {
-  --color-background: var(--background);
+  --color-background-canvas: var(--background-canvas);
+  --color-background-surface: var(--background-surface);
+  --color-background-card: var(--background-card);
+  --color-foreground-canvas: var(--foreground-canvas);
+  --color-foreground-surface: var(--foreground-surface);
+  --color-foreground-card: var(--foreground-card);
+  --color-caption: var(--caption);
+
+  /* Brand Tokens */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* shadcn Used Tokens */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
   --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  /* Font Tokens */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark Theme Tokens */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-canvas: var(--Neutral0);
+    --background-surface: var(--Neutral100);
+    --background-card: var(--Neutral200);
+    --foreground-canvas: var(--Neutral1000);
+    --foreground-surface: var(--Neutral1000);
+    --foreground-card: var(--Neutral1000);
+    --caption: var(--Neutral800);
+
+    /* Brand Tokens */
+    --primary: var(--Neutral1000);
+    --primary-foreground: var(--Neutral0);
+
+    /* shadcn Used Tokens */
+    --secondary: var(--color-yellow-800);
+    --secondary-foreground: var(--color-yellow-100);
+    --muted: var(--Neutral100);
+    --foreground: var(--foreground-card);
+    --background: var(--background-card);
+    --border: var(--Neutral300);
+    --input: var(--Neutral300);
+    --muted-foreground: var(--Neutral400);
+    --ring: var(--color-zinc-300);
+    --destructive: var(--color-red-400);
+
+    /* Atlassian Neutrals */
+    --Neutral0: #18191a;
+    --Neutral100: #1f1f21;
+    --Neutral200: #242528;
+    --Neutral250: #2b2c2f;
+    --Neutral300: #303134;
+    --Neutral350: #3d3f43;
+    --Neutral400: #4b4d51;
+    --Neutral500: #63666b;
+    --Neutral600: #7e8188;
+    --Neutral700: #96999e;
+    --Neutral800: #a9abaf;
+    --Neutral900: #bfc1c4;
+    --Neutral1000: #cecfd2;
+    --Neutral1100: #e2e3e4;
+    --Neutral1200: #ffffff;
   }
 }
 
+/* Base Elements */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--background-canvas);
+  color: var(--foreground-canvas);
   font-family: Arial, Helvetica, sans-serif;
 }

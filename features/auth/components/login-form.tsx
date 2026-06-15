@@ -89,7 +89,7 @@ export default function LoginForm() {
             <Button
               type='button'
               variant='ghost'
-              className='absolute right-1 active:not-aria-[haspopup]:translate-y-0'
+              className='absolute right-1 active:not-aria-[haspopup]:translate-y-0 hover:bg-transparent'
               onClick={() => setVisible(!visible)}
             >
               {visible ? <Eye /> : <EyeOff />}

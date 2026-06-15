@@ -1,4 +1,4 @@
-import SignOutButton from '@/features/auth/components/signout-button';
+import PageLayout from '@/components/shared/page-layout';
 import { auth } from '@/infrastructure/auth/auth';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
@@ -11,8 +11,8 @@ export default async function Home() {
   }
 
   return (
-    <div>
-      <SignOutButton />
-    </div>
+    <PageLayout title='Home'>
+      <div className='bg-yellow-500'>test</div>
+    </PageLayout>
   );
 }

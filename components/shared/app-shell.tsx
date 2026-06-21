@@ -12,11 +12,11 @@ export default function AppShell({ children }: AppShellProps) {
 
   return (
     <SidebarContext.Provider value={{ expanded, setExpanded }}>
-      <div className='flex min-h-dvh'>
-        <div className='ml-3 mt-4'>
+      <div className='flex h-dvh overflow-hidden'>
+        <div className='ml-3 mt-4 shrink-0'>
           <Sidebar />
         </div>
-        <main className='flex-1 bg-background p-3 rounded-xl my-1 mr-1 ml-3 shadow'>
+        <main className='my-1 mr-1 ml-3 flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl bg-background p-3 shadow'>
           {children}
         </main>
       </div>

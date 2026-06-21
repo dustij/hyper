@@ -1,16 +1,22 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Dumbbell, Home } from 'lucide-react';
-import Link from 'next/link';
+import { ClipboardEdit, Dumbbell, Home, List } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { createContext, useContext } from 'react';
-import { Button } from '../ui/button';
+import SidebarItem from './sidebar-item';
 
 type SidebarContextValue = {
   expanded: boolean;
   setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+const sidebarItems = [
+  { pathname: '/', label: 'Home', icon: Home },
+  { pathname: '/current', label: 'Current', icon: Dumbbell },
+  { pathname: '/build', label: 'Build', icon: ClipboardEdit },
+  { pathname: '/mesocycles', label: 'Mesocycles', icon: List },
+];
 
 export const SidebarContext = createContext<SidebarContextValue>({
   expanded: false,
@@ -33,42 +39,15 @@ export default function Sidebar() {
       )}
     >
       <div className='flex flex-col gap-3'>
-        <Button
-          asChild
-          variant='ghost'
-          size='lg'
-          className={cn(
-            'justify-start gap-0 overflow-hidden px-0 hover:bg-sidebar-border',
-            pathname === '/' && 'bg-sidebar-border',
-          )}
-        >
-          <Link href='/'>
-            <div className='flex'>
-              <span className='shrink-0 px-1.75'>
-                <Home className='size-5' />
-              </span>
-              <p className='ml-4 flex-1'>Home</p>
-            </div>
-          </Link>
-        </Button>
-        <Button
-          asChild
-          variant='ghost'
-          size='lg'
-          className={cn(
-            'justify-start gap-0 overflow-hidden px-0 hover:bg-sidebar-border',
-            pathname === '/current' && 'bg-sidebar-border',
-          )}
-        >
-          <Link href='/current'>
-            <div className='flex'>
-              <span className='shrink-0 px-1.75'>
-                <Dumbbell className='size-5' />
-              </span>
-              <p className='ml-4 flex-1'>Current</p>
-            </div>
-          </Link>
-        </Button>
+        {sidebarItems.map((item) => (
+          <SidebarItem
+            key={item.pathname}
+            pathname={item.pathname}
+            label={item.label}
+            Icon={item.icon}
+            isActive={pathname === item.pathname}
+          />
+        ))}
       </div>
     </div>
   );

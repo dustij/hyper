@@ -47,7 +47,7 @@
 
 :root {
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: var(--color-neutral-800);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
@@ -77,7 +77,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: var(--color-neutral-700);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -129,5 +129,23 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer components {
+  .text-title {
+    @apply text-2xl font-semibold tracking-tight leading-tight text-card-foreground;
+  }
+
+  .text-heading {
+    @apply mt-10 mb-3 text-xl font-semibold tracking-tight leading-snug text-card-foreground;
+  }
+
+  .text-subheading {
+    @apply mt-6 mb-2 text-lg font-medium leading-snug text-foreground;
+  }
+
+  .text-body {
+    @apply text-base font-normal leading-6 text-foreground;
   }
 }

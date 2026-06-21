@@ -26,9 +26,9 @@ export default function PageLayout({ title, children }: PageLayoutProps) {
             <SidebarOpen className='size-5 text-muted-foreground' />
           )}
         </Button>
-        <h1 className='text-xl'>{title}</h1>
+        <h1 className='text-title'>{title}</h1>
       </div>
-      {children}
+      <div className='px-2'>{children}</div>
     </div>
   );
 }

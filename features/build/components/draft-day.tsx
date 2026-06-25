@@ -24,6 +24,8 @@ export default function DraftDay({
         <input
           type='text'
           placeholder={day.name}
+          name={`${day.id}-name`}
+          id={`${day.id}-name`}
           className='text-lg font-medium text-card-foreground px-1.5 py-1'
         />
         <DayDropdown
@@ -41,8 +43,8 @@ export default function DraftDay({
               <div className='flex justify-between'>
                 <input
                   type='text'
-                  name=''
-                  id=''
+                  name={`${exercise.id}-name`}
+                  id={`${exercise.id}-name`}
                   placeholder='Name'
                   className='font-medium text-card-foreground px-1'
                 />
@@ -57,8 +59,8 @@ export default function DraftDay({
                   <HandFist className='size-3.5 text-muted-foreground' />
                   <AutoWidthInput
                     type='text'
-                    name=''
-                    id=''
+                    name={`${exercise.id}-muscle-group`}
+                    id={`${exercise.id}-muscle-group`}
                     placeholder='Muscle group'
                     className='text-sm text-muted-foreground'
                   />
@@ -67,8 +69,8 @@ export default function DraftDay({
                   <ShelvingUnit className='size-3.5 text-muted-foreground' />
                   <AutoWidthInput
                     type='text'
-                    name=''
-                    id=''
+                    name={`${exercise.id}-equipment`}
+                    id={`${exercise.id}-equipment`}
                     placeholder='Equipment'
                     className='text-sm text-muted-foreground'
                   />

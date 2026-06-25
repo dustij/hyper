@@ -9,7 +9,7 @@ export const MesocycleTemplateExerciseSchema = z.object({
 });
 
 export const MesocycleTemplateDaySchema = z.object({
-  name: z.string().trim(),
+  name: z.string().trim().min(1, { error: 'Day name is required.' }),
   exercises: z
     .array(MesocycleTemplateExerciseSchema)
     .min(1, { error: 'Add at least one exercise.' }),

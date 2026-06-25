@@ -2,6 +2,9 @@
 
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import * as z from 'zod';
+import { CreateMesocycleTemplateSchema } from '../schemas';
 import type { DraftDay as DraftDayModel } from '../types';
 import DraftDay from './draft-day';
 
@@ -22,6 +25,38 @@ export default function BuildForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    const validateFields = CreateMesocycleTemplateSchema.safeParse({
+      name: formData.get('name'),
+      days: draftDays.map((day) => {
+        return {
+          name: formData.get(`${day.id}-name`),
+          exercises: day.exercises.map((exercise) => {
+            return {
+              name: formData.get(`${exercise.id}-name`),
+              muscleGroup: formData.get(`${exercise.id}-muscle-group`),
+              equipment: formData.get(`${exercise.id}-equipment`),
+            };
+          }),
+        };
+      }),
+    });
+
+    if (!validateFields.success) {
+      z.flattenError(validateFields.error).fieldErrors.name?.forEach(
+        (error) => {
+          toast(error, { position: 'bottom-center', type: 'error' });
+        },
+      );
+      z.flattenError(validateFields.error).fieldErrors.days?.forEach(
+        (error) => {
+          toast(error, { position: 'bottom-center', type: 'error' });
+        },
+      );
+      setPending(false);
+    }
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLFormElement>) {
@@ -159,8 +194,8 @@ export default function BuildForm() {
         <div className='flex justify-between'>
           <input
             type='text'
-            name='template-name'
-            id='template-name'
+            name='name'
+            id='name'
             placeholder='Untitled'
             className='text-title shrink-0 px-2 py-1.25 text-ellipsis'
           />

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 import Sidebar, { SidebarContext } from './sidebar';
 
 type AppShellProps = {
@@ -20,6 +21,7 @@ export default function AppShell({ children }: AppShellProps) {
           {children}
         </main>
       </div>
+      <ToastContainer />
     </SidebarContext.Provider>
   );
 }
